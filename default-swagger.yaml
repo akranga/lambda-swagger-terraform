@@ -1,0 +1,22 @@
+---
+swagger: "2.0"
+info:
+  version: "2016-03-22T17:33:14Z"
+  title: "${stack_name}"
+basePath: /"${stage_name}"
+schemes:
+- "https"
+paths:
+  ${lambda_path}:
+    post:
+      responses:
+        200:
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        responses:
+          .*:
+            statusCode: "200"
+        uri: "${lambda_function_full_arn}"
+        httpMethod: "${http_method}"
+        type: "aws"
+          
